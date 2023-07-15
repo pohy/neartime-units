@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnf04qbearp40"]
+
+[ext_resource type="Texture2D" uid="uid://b222luesg042g" path="res://addons/kenney_prototype_textures/orange/texture_02.png" id="1_lpdw4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sfrlx"]
+albedo_texture = ExtResource("1_lpdw4")
+uv1_scale = Vector3(1.5, 10, 0.5)
+
+[node name="Wall" type="CSGBox3D"]
+material_override = SubResource("StandardMaterial3D_sfrlx")
+size = Vector3(0.5, 1.5, 10)

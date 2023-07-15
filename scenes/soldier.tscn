@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://67scucygsbbc"]
+
+[ext_resource type="Texture2D" uid="uid://dpaobclo83kw4" path="res://addons/kenney_prototype_textures/green/texture_01.png" id="1_y5q1p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6ntu"]
+albedo_texture = ExtResource("1_y5q1p")
+
+[node name="Soldier" type="CSGCylinder3D"]
+material_override = SubResource("StandardMaterial3D_f6ntu")
+height = 1.8
