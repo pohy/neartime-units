@@ -6,6 +6,9 @@
 albedo_texture = ExtResource("1_lpdw4")
 uv1_scale = Vector3(1.5, 10, 0.5)
 
-[node name="Wall" type="CSGBox3D"]
+[node name="Wall" type="Node3D" groups=["cover"]]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.75, 5)
 material_override = SubResource("StandardMaterial3D_sfrlx")
 size = Vector3(0.5, 1.5, 10)

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg2tiwif7063t"]
+
+[ext_resource type="PackedScene" uid="uid://dnf04qbearp40" path="res://scenes/wall.tscn" id="1_7h3g7"]
+
+[node name="WallHigh" type="Node3D" groups=["cover"]]
+
+[node name="Tp" parent="." instance=ExtResource("1_7h3g7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.8, 2.08165e-12)
+
+[node name="Bottm" parent="." instance=ExtResource("1_7h3g7")]

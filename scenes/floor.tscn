@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy2jc3cxqjm05"]
+
+[ext_resource type="Texture2D" uid="uid://cvtmmfggbouao" path="res://addons/kenney_prototype_textures/light/texture_08.png" id="1_n2a3h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oikfh"]
+albedo_texture = ExtResource("1_n2a3h")
+uv1_scale = Vector3(1000, 1000, 1000)
+
+[node name="Floor" type="Node3D" groups=["walkable"]]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.5, 2.08165e-12)
+material_override = SubResource("StandardMaterial3D_oikfh")
+size = Vector3(1000, 1, 1000)
