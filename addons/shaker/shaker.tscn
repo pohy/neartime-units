@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bu4vgmqjaq141"]
+
+[ext_resource type="Script" path="res://addons/shaker/shaker.gd" id="1_j854t"]
+
+[node name="Shaker" type="Node"]
+script = ExtResource("1_j854t")

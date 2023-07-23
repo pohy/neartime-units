@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://derlp1xdjxfyh"]
+
+[ext_resource type="Script" path="res://components/camera/FollowCamera.gd" id="1_v1ud4"]
+[ext_resource type="PackedScene" uid="uid://cktwl5lqa7123" path="res://components/speed/Speed.tscn" id="3_6gcby"]
+[ext_resource type="PackedScene" uid="uid://d12u6d66qf7qe" path="res://components/mouse_over/MouseOver.tscn" id="4_1x0a0"]
+
+[node name="FollowCamera" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
+script = ExtResource("1_v1ud4")
+fixed = true
+
+[node name="Speed" parent="." instance=ExtResource("3_6gcby")]
+
+[node name="MouseOver" parent="." instance=ExtResource("4_1x0a0")]
+
+[node name="TODO_ Mouse over should be provided from outside" type="Node" parent="."]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmwdeawtgrfok"]
+
+[ext_resource type="Script" path="res://components/camera/PanningCamera.gd" id="1_hhrs1"]
+[ext_resource type="PackedScene" uid="uid://bby0vuyah18m0" path="res://components/panning_area/PanningArea.tscn" id="2_nm4rp"]
+[ext_resource type="Shape2D" uid="uid://b0wnu6fee8wf6" path="res://resources/pan_area_rect.tres" id="3_beqh5"]
+[ext_resource type="CameraAttributesPhysical" uid="uid://ct35u7xv4phk8" path="res://resources/camera_attributes_physical.tres" id="4_07fnh"]
+
+[node name="PanningCamera" type="Node3D"]
+script = ExtResource("1_hhrs1")
+acceleration = 5.0
+max_speed = 15.0
+
+[node name="PanningArea" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_nm4rp")]
+camera = NodePath("../Camera3D")
+debug = true
+pan_area_rect = ExtResource("3_beqh5")
+pan_area = Rect2(350, 350, 1324, 438)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.230848, 0.97299, 0, -0.97299, 0.230848, 0, 5.05686, 2.05263)
+attributes = ExtResource("4_07fnh")
+current = true

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://d12u6d66qf7qe"]
+
+[ext_resource type="Script" path="res://components/mouse_over/MouseOver.gd" id="1_j74ax"]
+[ext_resource type="Shape2D" uid="uid://b0wnu6fee8wf6" path="res://resources/pan_area_rect.tres" id="2_2d2h8"]
+[ext_resource type="Script" path="res://components/mouse/Mouse.gd" id="3_3enj4"]
+
+[node name="MouseOver" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_j74ax")
+bounds = ExtResource("2_2d2h8")
+bounds_rect = Rect2(175, 175, -348, -348)
+
+[node name="Mouse" type="Node" parent="."]
+script = ExtResource("3_3enj4")

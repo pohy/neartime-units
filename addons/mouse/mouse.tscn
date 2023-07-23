@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://blitifbt0btl7"]
+
+[ext_resource type="Script" path="res://addons/mouse/Mouse.gd" id="1_rpl1b"]
+
+[node name="Mouse" type="Node"]
+script = ExtResource("1_rpl1b")
