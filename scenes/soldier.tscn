@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://67scucygsbbc"]
+[gd_scene load_steps=7 format=3 uid="uid://67scucygsbbc"]
 
+[ext_resource type="Script" path="res://scenes/soldier.gd" id="1_dscxa"]
 [ext_resource type="Texture2D" uid="uid://dpaobclo83kw4" path="res://addons/kenney_prototype_textures/green/texture_01.png" id="1_y5q1p"]
+[ext_resource type="PackedScene" uid="uid://dhaiinwln6m1o" path="res://addons/input/Input.tscn" id="2_apl36"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ok7mf"]
 height = 1.8
@@ -14,6 +16,11 @@ albedo_color = Color(0.117647, 0.117647, 0.117647, 1)
 [node name="Soldier" type="CharacterBody3D"]
 collision_layer = 4
 collision_mask = 2
+script = ExtResource("1_dscxa")
+speed = 10.0
+rotation_speed = 10.0
+
+[node name="Input" parent="." instance=ExtResource("2_apl36")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_ok7mf")

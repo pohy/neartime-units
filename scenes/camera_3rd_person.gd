@@ -2,19 +2,33 @@
 class_name Camera3rdPerson
 extends Node3D
 
-@export var offset: Vector3 = Vector3.ZERO
-@export var target: Node3D
-@export var sensitivity: Vector2 = Vector2(0.1, 0.1)
-@export var speed: float = 1.0
-@export var max_camera_rotation: Vector2 = Vector2(-30, 60)
+var _rotation_target: Basis = Basis.IDENTITY
+var _target_y_rot: float = 0.0
+var _offset: Vector3 = Vector3.ZERO
 
 @onready var _look_target: Node3D = $LookTarget
 @onready var _look_direction: Node3D = $LookTarget/Direction
 @onready var _camera: Camera3D = $Camera3D
 @onready var _mouse: Mouse = $Mouse
 
-var _rotation_target: Basis = Basis.IDENTITY
-var _target_y_rot: float = 0.0
+@export var offset: Vector3:
+	get:
+		return _offset
+	set(value):
+		_offset = value
+		if _camera:
+			_camera.position = _offset
+@export var target: Node3D
+@export var sensitivity: Vector2 = Vector2(0.1, 0.1)
+@export var speed: float = 1.0
+@export var max_camera_rotation: Vector2 = Vector2(-30, 60)
+
+var look_target: Node3D:
+	get:
+		return _look_target
+var look_direction: Node3D:
+	get:
+		return _look_direction
 
 
 func _ready():
