@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4jqhvkoiv8pl"]
+
+[ext_resource type="Script" path="res://scenes/camera_3rd_person.gd" id="1_sc5vi"]
+[ext_resource type="Environment" uid="uid://cer7b3fbnveh3" path="res://resources/environment.tres" id="2_4uwrh"]
+[ext_resource type="CameraAttributesPhysical" uid="uid://do6mnyueegoc8" path="res://resources/camera_attributes_physical.tres" id="3_68ws3"]
+[ext_resource type="PackedScene" uid="uid://blitifbt0btl7" path="res://addons/mouse/mouse.tscn" id="4_oxpdw"]
+
+[node name="Camera3rdPerson" type="Node3D"]
+script = ExtResource("1_sc5vi")
+speed = 4.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 2.32157e-08, -8.42839e-08, 3.36264e-16, 0.964095, 0.265556, 8.74227e-08, 0.265556, -0.964095, -0.146, 4.831, -9.848)
+environment = ExtResource("2_4uwrh")
+attributes = ExtResource("3_68ws3")
+
+[node name="LookTarget" type="Node3D" parent="."]
+
+[node name="Direction" type="Node3D" parent="LookTarget"]
+transform = Transform3D(1, -1.96772e-24, 1.3514e-08, 7.33437e-24, 1, -8.30149e-23, 5.70726e-09, -1.261e-23, 1, 2.08165e-12, 2.08165e-12, 1)
+
+[node name="Mouse" parent="." instance=ExtResource("4_oxpdw")]
