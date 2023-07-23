@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b20hsbq8tt4j7"]
+
+[ext_resource type="Script" path="res://scenes/movement_controls.gd" id="1_m0wot"]
+[ext_resource type="PackedScene" uid="uid://dhaiinwln6m1o" path="res://addons/input/Input.tscn" id="2_fnolx"]
+
+[node name="MovementControls" type="Node"]
+script = ExtResource("1_m0wot")
+speed = 10.0
+
+[node name="Input" parent="." instance=ExtResource("2_fnolx")]

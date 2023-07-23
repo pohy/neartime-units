@@ -25,8 +25,9 @@ func _process(delta):
 	if Engine.is_editor_hint():
 		return
 
-	move_towards_mouse_cursor()
-	try_to_snap_to_cover()
+	if not _mouse.right:
+		move_towards_mouse_cursor()
+		try_to_snap_to_cover()
 
 
 func _on_body_entered(body):

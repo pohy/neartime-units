@@ -19,20 +19,14 @@ func _get_configuration_warnings():
 
 
 func _process(delta):
+	return
 	if Engine.is_editor_hint():
 		return
 
 	var input_dir = Vector3(_input.dir.x, 0, _input.dir.y)
 	var dir_camera = input_dir.rotated(Vector3.UP, camera.look_target.rotation.y)
-	velocity = dir_camera * speed
 
+	# TODO: Refactor the mesh body look at into its own re-usable component
 	var input_look_target = camera.look_target.global_transform.origin + dir_camera * -1
 	_body_look_target = _body_look_target.lerp(input_look_target, rotation_speed * delta)
 	_body.look_at(_body_look_target, Vector3.UP)
-
-
-func _physics_process(delta: float) -> void:
-	if Engine.is_editor_hint():
-		return
-
-	move_and_slide()

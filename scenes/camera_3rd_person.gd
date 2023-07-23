@@ -53,6 +53,8 @@ func _get_configuration_warnings():
 
 
 func rotate_towards_rotation_target(delta: float):
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if _mouse.right else Input.MOUSE_MODE_VISIBLE
+
 	if not target:
 		return
 

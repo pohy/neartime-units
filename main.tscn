@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cyehicd6ehwg3"]
+[gd_scene load_steps=10 format=3 uid="uid://cyehicd6ehwg3"]
 
 [ext_resource type="PackedScene" uid="uid://b4jqhvkoiv8pl" path="res://scenes/camera_3rd_person.tscn" id="2_8ffyc"]
 [ext_resource type="PackedScene" uid="uid://dnf04qbearp40" path="res://scenes/wall.tscn" id="2_qsf23"]
@@ -7,6 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://cg2tiwif7063t" path="res://scenes/wall_high.tscn" id="5_23vbp"]
 [ext_resource type="CameraAttributesPhysical" uid="uid://do6mnyueegoc8" path="res://resources/camera_attributes_physical.tres" id="5_cbsqw"]
 [ext_resource type="PackedScene" uid="uid://h4nqr2p8bdw7" path="res://scenes/position_target.tscn" id="5_xwtkh"]
+[ext_resource type="PackedScene" uid="uid://b20hsbq8tt4j7" path="res://scenes/movement_controls.tscn" id="8_802sr"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1o3mc"]
+height = 0.3
+radius = 0.8
 
 [node name="Main" type="Node3D"]
 
@@ -18,9 +23,9 @@ transform = Transform3D(0.727605, -0.335453, 0.598383, -3.41437e-09, 0.872283, 0
 shadow_enabled = true
 
 [node name="Camera3rdPerson" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_8ffyc")]
-transform = Transform3D(0.970296, -2.54047e-16, 0.241922, 3.48787e-16, 1, -3.48787e-16, -0.241922, 4.22806e-16, 0.970296, -2.506, 0.9, 2.08165e-12)
+transform = Transform3D(0.970296, -2.54047e-16, 0.241922, 3.48787e-16, 1, -3.48787e-16, -0.241922, 4.22806e-16, 0.970296, 5.40691, 0, 1.00342)
 offset = Vector3(2.08165e-12, 4.17, -7.05)
-target = NodePath("../Soldier")
+target = NodePath("../FreeSpirit")
 sensitivity = Vector2(0.003, 0.02)
 max_camera_rotation = Vector2(-45, 15)
 
@@ -192,4 +197,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.076, -0.002, 3.67)
 [node name="Soldier" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("4_5tdri")]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -2.506, 0.9, 2.08165e-12)
 camera = NodePath("../Camera3rdPerson")
-rotation_speed = null
+
+[node name="FreeSpirit" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.40691, 0, 1.00342)
+collision_layer = 0
+collision_mask = 0
+
+[node name="MovementControls" parent="FreeSpirit" node_paths=PackedStringArray("camera") instance=ExtResource("8_802sr")]
+camera = NodePath("../../Camera3rdPerson")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FreeSpirit"]
+shape = SubResource("CylinderShape3D_1o3mc")
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="FreeSpirit/CollisionShape3D"]
+outer_radius = 0.8
+sides = 16
+ring_sides = 16
