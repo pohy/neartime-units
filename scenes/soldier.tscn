@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://67scucygsbbc"]
+[gd_scene load_steps=5 format=3 uid="uid://67scucygsbbc"]
 
 [ext_resource type="Texture2D" uid="uid://dpaobclo83kw4" path="res://addons/kenney_prototype_textures/green/texture_01.png" id="1_y5q1p"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ok7mf"]
+height = 1.8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6ntu"]
 albedo_texture = ExtResource("1_y5q1p")
@@ -8,21 +11,26 @@ albedo_texture = ExtResource("1_y5q1p")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e4b3k"]
 albedo_color = Color(0.117647, 0.117647, 0.117647, 1)
 
-[node name="Soldier" type="Node3D"]
+[node name="Soldier" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 2
 
-[node name="Body" type="CSGCylinder3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_ok7mf")
+
+[node name="Body" type="CSGCylinder3D" parent="CollisionShape3D"]
 material_override = SubResource("StandardMaterial3D_f6ntu")
 height = 1.8
 
-[node name="Glasses" type="CSGBox3D" parent="."]
+[node name="Glasses" type="CSGBox3D" parent="CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 8.17692e-09, 0, 8.17692e-09, 1, 0, 0.581001, 0.369172)
 material_override = SubResource("StandardMaterial3D_e4b3k")
 size = Vector3(0.4, 0.2, 0.4)
 
-[node name="Gun" type="Node3D" parent="."]
+[node name="Gun" type="Node3D" parent="CollisionShape3D"]
 transform = Transform3D(0.985178, -0.0614889, 0.160134, 0.171534, 0.353153, -0.919706, 0, 0.933543, 0.358466, -0.358723, 0.35478, 0.220623)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Gun"]
+[node name="CSGBox3D" type="CSGBox3D" parent="CollisionShape3D/Gun"]
 transform = Transform3D(1, 2.3549e-09, 1.81374e-08, 7.70497e-09, 1, -5.77853e-08, -1.29858e-09, -2.1418e-09, 1, 0.000578314, 0.0264343, 0.538921)
 material_override = SubResource("StandardMaterial3D_e4b3k")
 size = Vector3(0.2, 0.2, 1)

@@ -31,3 +31,4 @@ primary={
 [layer_names]
 
 3d_physics/layer_2="cover"
+3d_physics/layer_3="mouse"

@@ -16,6 +16,7 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_4u68s")
 radius_multiplier = 0.5
+speed = 35.0
 
 [node name="Mouse" parent="." instance=ExtResource("2_g278r")]
 
@@ -27,6 +28,12 @@ material_override = SubResource("StandardMaterial3D_8n781")
 radius = 0.6
 height = 0.25
 
+[node name="DebugSphere" type="CSGSphere3D" parent="."]
+radius = 0.2
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="DebugSphere"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 1)
+radius = 0.1
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
-[connection signal="input_event" from="." to="." method="_on_input_event"]
