@@ -1,4 +1,5 @@
 @tool
+class_name PositionTarget
 extends Area3D
 
 @export var radius_multiplier: float = 1.

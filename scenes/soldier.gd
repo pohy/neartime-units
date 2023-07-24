@@ -1,10 +1,10 @@
-@tool
 extends CharacterBody3D
 
 @export var camera: Camera3rdPerson
 @export var speed: float = 1.0
 @export var rotation_speed: float = 1.0
 
+# TODO: Change the input implementation
 @onready var _input: Inpt = $Input
 @onready var _body: CollisionShape3D = $CollisionShape3D
 
