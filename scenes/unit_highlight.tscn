@@ -1,0 +1,88 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuvdkapynhmr2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pq3a1"]
+transparency = 1
+albedo_color = Color(1, 1, 0.0509804, 0.607843)
+
+[sub_resource type="Animation" id="Animation_q6nsg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGCombiner3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGCombiner3D/CSGCylinder3D:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.6]
+}
+
+[sub_resource type="Animation" id="Animation_6dmai"]
+resource_name = "boinks"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGCombiner3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-0.5, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(2.08165e-12, 0.1, 2.08165e-12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGCombiner3D/CSGCylinder3D:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.6, 0.57]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wsplg"]
+_data = {
+"RESET": SubResource("Animation_q6nsg"),
+"boinks": SubResource("Animation_6dmai")
+}
+
+[node name="UnitHighlight" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+material_override = SubResource("StandardMaterial3D_pq3a1")
+cast_shadow = 0
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
+radius = 0.6
+height = 0.15
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D"]
+radius = 0.3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "boinks"
+speed_scale = 0.4
+libraries = {
+"": SubResource("AnimationLibrary_wsplg")
+}

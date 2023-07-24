@@ -7,7 +7,9 @@
 
 [node name="MovementControls" type="Node3D"]
 script = ExtResource("1_m0wot")
-speed = 10.0
+speed = 15.0
+acceleration = 5.0
+friction = 7.0
 
 [node name="Mouse" parent="." instance=ExtResource("2_vyebj")]
 

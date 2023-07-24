@@ -7,8 +7,8 @@
 
 [node name="Camera3rdPerson" type="Node3D"]
 script = ExtResource("1_sc5vi")
-offset = null
 speed = 4.0
+fov = 56.5709
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 2.32157e-08, -8.42839e-08, 3.36264e-16, 0.964095, 0.265556, 8.74227e-08, 0.265556, -0.964095, -0.146, 4.831, -9.848)
@@ -18,7 +18,7 @@ attributes = ExtResource("3_68ws3")
 [node name="LookTarget" type="Node3D" parent="."]
 
 [node name="Direction" type="Node3D" parent="LookTarget"]
-transform = Transform3D(1, -1.96772e-24, 1.3514e-08, 7.33437e-24, 1, -8.30149e-23, 5.70726e-09, -1.261e-23, 1, 2.08165e-12, 2.08165e-12, 1)
+transform = Transform3D(1, -1.96772e-24, 1.3514e-08, 7.33437e-24, 1, -8.30149e-23, 5.70726e-09, -1.261e-23, 1, 2.08165e-12, 2.08165e-12, 10)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="LookTarget/Direction"]
 transform = Transform3D(1, -1.96772e-24, 1.3514e-08, 7.33437e-24, 1, -8.30149e-23, 5.70726e-09, -1.261e-23, 1, 0, 0, 0)
