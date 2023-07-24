@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b20hsbq8tt4j7"]
+[gd_scene load_steps=5 format=3 uid="uid://b20hsbq8tt4j7"]
 
 [ext_resource type="Script" path="res://scenes/movement_controls.gd" id="1_m0wot"]
 [ext_resource type="PackedScene" uid="uid://dhaiinwln6m1o" path="res://addons/input/Input.tscn" id="2_fnolx"]
+[ext_resource type="PackedScene" uid="uid://cktwl5lqa7123" path="res://addons/speed/Speed.tscn" id="2_qy0mb"]
+[ext_resource type="PackedScene" uid="uid://blitifbt0btl7" path="res://addons/mouse/mouse.tscn" id="2_vyebj"]
 
-[node name="MovementControls" type="Node"]
+[node name="MovementControls" type="Node3D"]
 script = ExtResource("1_m0wot")
 speed = 10.0
+
+[node name="Mouse" parent="." instance=ExtResource("2_vyebj")]
+
+[node name="Speed" parent="." instance=ExtResource("2_qy0mb")]
 
 [node name="Input" parent="." instance=ExtResource("2_fnolx")]

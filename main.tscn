@@ -1,8 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cyehicd6ehwg3"]
+[gd_scene load_steps=13 format=3 uid="uid://cyehicd6ehwg3"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_3penk"]
+[ext_resource type="Environment" uid="uid://cer7b3fbnveh3" path="res://resources/environment.tres" id="1_g6pg1"]
 [ext_resource type="PackedScene" uid="uid://b4jqhvkoiv8pl" path="res://scenes/camera_3rd_person.tscn" id="2_8ffyc"]
 [ext_resource type="PackedScene" uid="uid://dnf04qbearp40" path="res://scenes/wall.tscn" id="2_qsf23"]
 [ext_resource type="PackedScene" uid="uid://67scucygsbbc" path="res://scenes/soldier.tscn" id="4_5tdri"]
+[ext_resource type="PackedScene" uid="uid://b0voj2tpwcd17" path="res://scenes/speed_zoom_out.tscn" id="4_26tkq"]
 [ext_resource type="PackedScene" uid="uid://dy2jc3cxqjm05" path="res://scenes/floor.tscn" id="5_3c7hm"]
 [ext_resource type="PackedScene" uid="uid://cg2tiwif7063t" path="res://scenes/wall_high.tscn" id="5_23vbp"]
 [ext_resource type="CameraAttributesPhysical" uid="uid://do6mnyueegoc8" path="res://resources/camera_attributes_physical.tres" id="5_cbsqw"]
@@ -13,21 +16,30 @@
 height = 0.3
 radius = 0.8
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("camera", "controls")]
+script = ExtResource("1_3penk")
+camera = NodePath("WorldEnvironment/Camera3rdPerson")
+controls = NodePath("FreeSpirit/MovementControls")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_g6pg1")
 camera_attributes = ExtResource("5_cbsqw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.727605, -0.335453, 0.598383, -3.41437e-09, 0.872283, 0.489002, -0.685996, -0.3558, 0.634677, 0, 2.62191, 0)
 shadow_enabled = true
 
-[node name="Camera3rdPerson" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_8ffyc")]
+[node name="Camera3rdPerson" parent="WorldEnvironment" node_paths=PackedStringArray("target") instance=ExtResource("2_8ffyc")]
 transform = Transform3D(0.970296, -2.54047e-16, 0.241922, 3.48787e-16, 1, -3.48787e-16, -0.241922, 4.22806e-16, 0.970296, 5.40691, 0, 1.00342)
 offset = Vector3(2.08165e-12, 4.17, -7.05)
-target = NodePath("../FreeSpirit")
+target = NodePath("../../FreeSpirit")
 sensitivity = Vector2(0.003, 0.02)
 max_camera_rotation = Vector2(-45, 15)
+fov = 56.5709
+
+[node name="SpeedZoomOut" parent="WorldEnvironment/Camera3rdPerson" instance=ExtResource("4_26tkq")]
+amount = 3.0
+speed = 10.0
 
 [node name="Level" type="Node3D" parent="."]
 
@@ -194,17 +206,17 @@ transform = Transform3D(0.541694, 0, -0.840576, 0, 1, 0, 0.840576, 0, 0.541694, 
 [node name="PositionTarget" parent="." instance=ExtResource("5_xwtkh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.076, -0.002, 3.67)
 
-[node name="Soldier" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("4_5tdri")]
+[node name="Soldier" parent="." node_paths=PackedStringArray("camera") groups=["possesable"] instance=ExtResource("4_5tdri")]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -2.506, 0.9, 2.08165e-12)
-camera = NodePath("../Camera3rdPerson")
+camera = NodePath("../WorldEnvironment/Camera3rdPerson")
 
-[node name="FreeSpirit" type="CharacterBody3D" parent="."]
+[node name="FreeSpirit" type="CharacterBody3D" parent="." groups=["possesable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.40691, 0, 1.00342)
-collision_layer = 0
+collision_layer = 4
 collision_mask = 0
 
 [node name="MovementControls" parent="FreeSpirit" node_paths=PackedStringArray("camera") instance=ExtResource("8_802sr")]
-camera = NodePath("../../Camera3rdPerson")
+camera = NodePath("../../WorldEnvironment/Camera3rdPerson")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FreeSpirit"]
 shape = SubResource("CylinderShape3D_1o3mc")

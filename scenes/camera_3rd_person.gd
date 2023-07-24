@@ -22,6 +22,12 @@ var _offset: Vector3 = Vector3.ZERO
 @export var sensitivity: Vector2 = Vector2(0.1, 0.1)
 @export var speed: float = 1.0
 @export var max_camera_rotation: Vector2 = Vector2(-30, 60)
+@export var fov: float:
+	get:
+		return _camera.fov if _camera else 0.
+	set(value):
+		if _camera:
+			_camera.fov = value
 
 var look_target: Node3D:
 	get:

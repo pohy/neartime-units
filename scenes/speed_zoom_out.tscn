@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0voj2tpwcd17"]
+
+[ext_resource type="Script" path="res://scenes/speed_zoom_out.gd" id="1_8koqx"]
+[ext_resource type="PackedScene" uid="uid://cktwl5lqa7123" path="res://addons/speed/Speed.tscn" id="1_ihtbh"]
+
+[node name="SpeedZoomOut" type="Node3D"]
+script = ExtResource("1_8koqx")
+
+[node name="Speed" parent="." instance=ExtResource("1_ihtbh")]
+transform = Transform3D(1, -9.90675e-25, 4.43199e-10, -1.40476e-23, 1, 2.77033e-24, 5.45768e-11, -2.20213e-23, 1, 0, 0, 0)
