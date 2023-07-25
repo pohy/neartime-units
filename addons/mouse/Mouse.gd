@@ -1,5 +1,5 @@
-extends Node
 class_name Mouse
+extends Node
 
 signal on_motion
 signal on_click

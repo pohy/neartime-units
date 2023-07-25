@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctki1oe0de0ay"]
+
+[ext_resource type="Script" path="res://scenes/pan_camera_towards_mouse.gd" id="1_olwoi"]
+[ext_resource type="PackedScene" uid="uid://blitifbt0btl7" path="res://addons/mouse/mouse.tscn" id="2_0itnk"]
+
+[node name="PanCameraTowardsMouse" type="Node"]
+script = ExtResource("1_olwoi")
+
+[node name="Mouse" parent="." instance=ExtResource("2_0itnk")]

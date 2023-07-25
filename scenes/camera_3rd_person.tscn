@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4jqhvkoiv8pl"]
+[gd_scene load_steps=6 format=3 uid="uid://b4jqhvkoiv8pl"]
 
 [ext_resource type="Script" path="res://scenes/camera_3rd_person.gd" id="1_sc5vi"]
 [ext_resource type="Environment" uid="uid://cer7b3fbnveh3" path="res://resources/environment.tres" id="2_4uwrh"]
 [ext_resource type="CameraAttributesPhysical" uid="uid://do6mnyueegoc8" path="res://resources/camera_attributes_physical.tres" id="3_68ws3"]
 [ext_resource type="PackedScene" uid="uid://blitifbt0btl7" path="res://addons/mouse/mouse.tscn" id="4_oxpdw"]
+[ext_resource type="PackedScene" uid="uid://ctki1oe0de0ay" path="res://scenes/pan_camera_towards_mouse.tscn" id="5_7swus"]
 
 [node name="Camera3rdPerson" type="Node3D"]
 script = ExtResource("1_sc5vi")
 speed = 4.0
+max_camera_rotation = Vector2(-25, 10)
 fov = 56.5709
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -29,3 +31,8 @@ transform = Transform3D(1, -1.96772e-24, 1.3514e-08, 7.33437e-24, 1, -8.30149e-2
 radius = 0.3
 
 [node name="Mouse" parent="." instance=ExtResource("4_oxpdw")]
+
+[node name="PanCameraTowardsMouse" parent="." instance=ExtResource("5_7swus")]
+process_mode = 4
+amount = 0.1
+target_path = NodePath("..")

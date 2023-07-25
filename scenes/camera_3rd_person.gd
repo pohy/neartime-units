@@ -66,9 +66,16 @@ func rotate_towards_rotation_target(delta: float):
 
 	if _mouse.right:
 		_look_target.rotate_object_local(Vector3.UP, -_mouse.delta.x * sensitivity.x)
-		_look_direction.translate(Vector3.UP * -_mouse.delta.y * sensitivity.y)
 
-	transform.basis = (
+	if not _mouse.right and _mouse.from_center.length() <= 1:
+		_look_direction.translate(
+			(
+				Vector3.RIGHT * -_mouse.delta.x * sensitivity.x * 2.
+				+ Vector3.UP * -_mouse.delta.y * sensitivity.y * .5
+			)
+		)
+
+	self.transform.basis = (
 		transform.basis.slerp(_look_target.transform.basis, speed * delta).orthonormalized()
 	)
 

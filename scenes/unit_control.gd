@@ -1,5 +1,7 @@
 extends Node
 
+@onready var _mouse: Mouse = $Mouse
+
 var _units: Array[CharacterBody3D] = []
 var _position_target_scene: PackedScene = preload("res://scenes/position_target.tscn")
 
@@ -7,12 +9,31 @@ var _position_targets: Dictionary = {}
 
 
 func _ready():
-	for u in get_tree().get_nodes_in_group("unit"):
-		if not u is CharacterBody3D:
+	for unit in get_tree().get_nodes_in_group("unit"):
+		if not unit is CharacterBody3D:
 			continue
 
-		_units.append(u)
-		_position_targets[u] = _position_target_scene.instantiate()
-		add_child(_position_targets[u])
+		_units.append(unit)
+		_position_targets[unit.get_instance_id()] = _position_target_scene.instantiate()
+		add_child(_position_targets[unit.get_instance_id()])
 
 	print_debug("Units: ", len(_units))
+
+
+func _input(event):
+	if event is InputEventMouseButton:
+		update_move_target()
+
+
+func update_move_target():
+	if not _mouse.left or _mouse.right:
+		return
+
+	for unit in _units:
+		# TODO: Check if target position is movable to
+		var position_target = _position_targets[unit.get_instance_id()] as CharacterBody3D
+		if not position_target:
+			printerr("Position target for the unit not found", unit)
+			print_debug("Position targets: ", _position_targets)
+			continue
+		unit.move_target = position_target.position

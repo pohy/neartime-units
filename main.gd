@@ -1,3 +1,4 @@
+@tool
 extends Node3D
 
 @export var camera: Camera3rdPerson
@@ -9,6 +10,11 @@ var _index: int = 0
 
 
 func _ready():
+	Engine.max_fps = 60
+
+	if Engine.is_editor_hint():
+		return
+
 	var possesed = controls.get_parent()
 	if possesed is CharacterBody3D:
 		_possesed = possesed
@@ -20,6 +26,9 @@ func _ready():
 			if p.get_instance_id() == _possesed.get_instance_id():
 				_index = i
 		i += 1
+
+func _process(delta):
+	Engine.max_fps = 60
 
 
 func _input(event):
