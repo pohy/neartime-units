@@ -205,8 +205,9 @@ transform = Transform3D(0.541694, 0, -0.840576, 0, 1, 0, 0.840576, 0, 0.541694, 
 [node name="WallHigh21" parent="Level/Building2" instance=ExtResource("5_23vbp")]
 transform = Transform3D(0.541694, 0, -0.840576, 0, 1, 0, 0.840576, 0, 0.541694, -15.4067, 4.47889, 17.7388)
 
-[node name="Unit" parent="." groups=["possesable"] instance=ExtResource("4_5tdri")]
+[node name="Unit" parent="." node_paths=PackedStringArray("camera") groups=["possesable"] instance=ExtResource("4_5tdri")]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -2.506, 0.9, 2.08165e-12)
+camera = NodePath("../WorldEnvironment/Camera3rdPerson")
 
 [node name="UnitHighlight" parent="Unit" instance=ExtResource("10_gx7h6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37589, 0)
