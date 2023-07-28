@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://di7iv38dc30oh"]
+
+[ext_resource type="Script" path="res://scenes/world_cursor.gd" id="1_4kgo3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_88l41"]
+transparency = 1
+albedo_color = Color(0.921569, 0.368627, 0.368627, 0.552941)
+
+[sub_resource type="SphereMesh" id="SphereMesh_biuob"]
+radius = 0.2
+height = 0.4
+radial_segments = 6
+rings = 3
+
+[node name="WorldCursor" type="Node3D"]
+script = ExtResource("1_4kgo3")
+debug = true
+
+[node name="DebugSphere" type="MeshInstance3D" parent="."]
+top_level = true
+material_override = SubResource("StandardMaterial3D_88l41")
+mesh = SubResource("SphereMesh_biuob")

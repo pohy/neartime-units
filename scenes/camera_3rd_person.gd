@@ -39,6 +39,7 @@ var look_direction: Node3D:
 
 func _ready():
 	_rotation_target = target.transform.basis
+	# Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _process(delta):
@@ -59,7 +60,7 @@ func _get_configuration_warnings():
 
 
 func rotate_towards_rotation_target(delta: float):
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if not _mouse.right else Input.MOUSE_MODE_VISIBLE
+	Input.mouse_mode = (Input.MOUSE_MODE_CAPTURED if not _mouse.right else Input.MOUSE_MODE_HIDDEN)
 
 	if not target:
 		return

@@ -5,7 +5,11 @@ signal on_motion
 signal on_click
 
 var left: bool = false
+var left_pressed: bool = false
+var left_released: bool = false
 var right: bool = false
+var right_pressed: bool = false
+var right_released: bool = false
 var pos: Vector2 = Vector2.ZERO
 var from_center: Vector2 = Vector2.ZERO
 var delta: Vector2 = Vector2.ZERO
@@ -24,6 +28,11 @@ func _process(_delta):
 	is_moving = false
 	delta = Vector2.ZERO
 
+	left_pressed = false
+	left_released = false
+	right_pressed = false
+	right_released = false
+
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -38,6 +47,10 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			left = event.is_pressed() and not event.is_released()
+			left_pressed = event.is_pressed()
+			left_released = event.is_released()
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			right = event.is_pressed() and not event.is_released()
+			right_pressed = event.is_pressed()
+			right_released = event.is_released()
 		on_click.emit()
