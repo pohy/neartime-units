@@ -13,10 +13,10 @@ radial_segments = 6
 rings = 3
 
 [node name="WorldCursor" type="Node3D"]
+top_level = true
 script = ExtResource("1_4kgo3")
 debug = true
 
 [node name="DebugSphere" type="MeshInstance3D" parent="."]
-top_level = true
 material_override = SubResource("StandardMaterial3D_88l41")
 mesh = SubResource("SphereMesh_biuob")

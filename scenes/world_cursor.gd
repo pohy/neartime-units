@@ -16,16 +16,19 @@ var _mouse: Mouse
 		if not _debug_sphere:
 			return
 		_debug_sphere.visible = value
-@export var pos: Vector3 = Vector3.ZERO:
+@export var pos: Vector3:
 	get:
-		return pos
+		return self.position
 
 
 func _ready():
 	_camera = get_viewport().get_camera_3d()
 	_mouse = $Mouse
 	_mouse = _mouse if _mouse else get_parent().get_node("Mouse")
+
+	assert(_camera is Camera3D, "Camera not found at path: " + str(get_path()))
 	assert(_mouse is Mouse, "Mouse not found at path: " + str(get_path()))
+
 	update_pos()
 
 
@@ -42,8 +45,7 @@ func update_pos():
 	if not result or not result.collider:
 		return
 
-	pos = result.position
-	_debug_sphere.global_position = result.position
+	self.position = result.position
 
 
 func cast_ray() -> Dictionary:

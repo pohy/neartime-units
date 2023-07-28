@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 
 @onready var _mouse: Mouse = $Mouse
 @onready var _world_cursor: WorldCursor = $WorldCursor

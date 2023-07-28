@@ -19,23 +19,40 @@ var _cylinder_shape_3d: CylinderShape3D
 var _state: State = State.Hidden:
 	set(value):
 		_state = value
-		# print_debug("state_changed", _state)
 var _material: BaseMaterial3D
+
+
+func _get_configuration_warnings():
+	var warnings = []
+	if not _collision_shape_3d.shape:
+		warnings.append("CollisionShape3D has no shape.")
+	if not _collision_shape_3d.shape is CylinderShape3D:
+		warnings.append("CollisionShape3D shape is not a CylinderShape3D.")
+	return warnings
 
 
 func _ready():
 	_cylinder_shape_3d = _collision_shape_3d.shape as CylinderShape3D
+	assert(
+		_cylinder_shape_3d is CylinderShape3D,
+		"Not a CylinderShape3D at path: " + str(_collision_shape_3d.shape)
+	)
+
 	_material = (
 		_csg_cylinder.material if _csg_cylinder.material else _csg_cylinder.material_override
 	)
-	assert(
-		_material is BaseMaterial3D,
-		"No material found on CSGCylinder3D. Path: " + str(_csg_cylinder.get_path())
+	var unique_material = (
+		_material.duplicate(true) if _material is BaseMaterial3D else StandardMaterial3D.new()
 	)
+	_csg_cylinder.material_override = unique_material
+	_material = unique_material
 
 
 func _process(delta):
 	sync_csg_to_collision_shape()
+
+	if Engine.is_editor_hint():
+		return
 
 	match _state:
 		State.Hidden:
@@ -46,15 +63,6 @@ func _process(delta):
 		State.Active:
 			self.visible = true
 			_material.albedo_color.a = 1.0
-
-
-func _get_configuration_warnings():
-	var warnings = []
-	if not _collision_shape_3d.shape:
-		warnings.append("CollisionShape3D has no shape.")
-	if not _collision_shape_3d.shape is CylinderShape3D:
-		warnings.append("CollisionShape3D shape is not a CylinderShape3D.")
-	return warnings
 
 
 func sync_csg_to_collision_shape():

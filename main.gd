@@ -27,8 +27,10 @@ func _ready():
 				_index = i
 		i += 1
 
+
 func _process(delta):
 	Engine.max_fps = 60
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 
 
 func _input(event):

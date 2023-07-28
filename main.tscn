@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cyehicd6ehwg3"]
+[gd_scene load_steps=17 format=3 uid="uid://cyehicd6ehwg3"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_3penk"]
 [ext_resource type="Environment" uid="uid://cer7b3fbnveh3" path="res://resources/environment.tres" id="1_g6pg1"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://b20hsbq8tt4j7" path="res://scenes/movement_controls.tscn" id="8_802sr"]
 [ext_resource type="PackedScene" uid="uid://cuvdkapynhmr2" path="res://scenes/unit_highlight.tscn" id="10_gx7h6"]
 [ext_resource type="PackedScene" uid="uid://b2nbsi585lgeg" path="res://scenes/unit_control.tscn" id="11_n0lcc"]
-[ext_resource type="Script" path="res://scenes/unit_control.gd" id="12_xhqto"]
 [ext_resource type="PackedScene" uid="uid://dhaiinwln6m1o" path="res://addons/input/Input.tscn" id="14_utoy1"]
 [ext_resource type="PackedScene" uid="uid://blitifbt0btl7" path="res://addons/mouse/mouse.tscn" id="15_fnauf"]
 [ext_resource type="PackedScene" uid="uid://di7iv38dc30oh" path="res://scenes/world_cursor.tscn" id="16_fl58i"]
@@ -230,7 +229,6 @@ sides = 16
 ring_sides = 16
 
 [node name="UnitControl" parent="." instance=ExtResource("11_n0lcc")]
-script = ExtResource("12_xhqto")
 
 [node name="Input" parent="UnitControl" instance=ExtResource("14_utoy1")]
 

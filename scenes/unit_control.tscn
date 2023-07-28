@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://b2nbsi585lgeg"]
+[gd_scene load_steps=2 format=3 uid="uid://b2nbsi585lgeg"]
 
-[node name="UnitControl" type="Node"]
+[ext_resource type="Script" path="res://scenes/unit_control.gd" id="1_qxmnr"]
+
+[node name="UnitControl" type="Node3D"]
+script = ExtResource("1_qxmnr")
