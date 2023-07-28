@@ -29,8 +29,11 @@ func _ready():
 
 
 func _process(delta):
-	Engine.max_fps = 60
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	if Engine.is_editor_hint():
+		return
+
+	Input.use_accumulated_input = false
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _input(event):
@@ -43,3 +46,7 @@ func _input(event):
 
 	if event.is_action("ui_cancel"):
 		get_tree().quit()
+
+
+func _exit_tree():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

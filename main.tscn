@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://cyehicd6ehwg3"]
+[gd_scene load_steps=18 format=3 uid="uid://cyehicd6ehwg3"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_3penk"]
 [ext_resource type="Environment" uid="uid://cer7b3fbnveh3" path="res://resources/environment.tres" id="1_g6pg1"]
 [ext_resource type="PackedScene" uid="uid://b4jqhvkoiv8pl" path="res://scenes/camera_3rd_person.tscn" id="2_8ffyc"]
+[ext_resource type="PackedScene" uid="uid://bhi0w3q7pg2qn" path="res://scenes/mouse_cursor.tscn" id="2_kx2ru"]
 [ext_resource type="PackedScene" uid="uid://dnf04qbearp40" path="res://scenes/wall.tscn" id="2_qsf23"]
 [ext_resource type="PackedScene" uid="uid://67scucygsbbc" path="res://scenes/unit.tscn" id="4_5tdri"]
 [ext_resource type="PackedScene" uid="uid://b0voj2tpwcd17" path="res://scenes/speed_zoom_out.tscn" id="4_26tkq"]
@@ -24,6 +25,8 @@ radius = 0.8
 script = ExtResource("1_3penk")
 camera = NodePath("WorldEnvironment/Camera3rdPerson")
 controls = NodePath("FreeSpirit/MovementControls")
+
+[node name="MouseCursor" parent="." instance=ExtResource("2_kx2ru")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_g6pg1")

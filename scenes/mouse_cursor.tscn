@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhi0w3q7pg2qn"]
+
+[ext_resource type="Script" path="res://scenes/mouse_cursor.gd" id="1_x78av"]
+[ext_resource type="PackedScene" uid="uid://blitifbt0btl7" path="res://addons/mouse/mouse.tscn" id="2_w7gd2"]
+
+[node name="MouseCursor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_x78av")
+
+[node name="Mouse" parent="." instance=ExtResource("2_w7gd2")]

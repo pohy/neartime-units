@@ -21,6 +21,7 @@ var _last_pos: Vector2 = Vector2.ZERO
 
 
 func _ready():
+	pos = get_viewport().get_mouse_position()
 	window_size = get_viewport().get_size()
 
 
@@ -37,9 +38,13 @@ func _process(_delta):
 func _input(event):
 	if event is InputEventMouseMotion:
 		is_moving = true
-		pos = event.position
-		from_center = (pos / window_size) * 2 - Vector2.ONE
 		delta = event.relative
+
+		pos += delta
+		pos.x = clamp(pos.x, 0, window_size.x)
+		pos.y = clamp(pos.y, 0, window_size.y)
+
+		from_center = (pos / window_size) * 2 - Vector2.ONE
 		_last_pos = pos
 
 		on_motion.emit()

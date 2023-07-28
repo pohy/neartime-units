@@ -7,12 +7,12 @@
 height = 0.25
 radius = 1.2
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pw4m1"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nvihl"]
 load_path = "res://.godot/imported/texture_01.png-38f28acdb9a95ea2efd835531b47e519.s3tc.ctex"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_crrxt"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hnb2o"]
 transparency = 1
-albedo_texture = SubResource("CompressedTexture2D_pw4m1")
+albedo_texture = SubResource("CompressedTexture2D_nvihl")
 
 [node name="PositionTarget" type="Area3D"]
 top_level = true
@@ -28,7 +28,7 @@ speed = 35.0
 shape = SubResource("CylinderShape3D_iopgc")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
-material_override = SubResource("StandardMaterial3D_crrxt")
+material_override = SubResource("StandardMaterial3D_hnb2o")
 radius = 0.6
 height = 0.25
 
