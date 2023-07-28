@@ -39,11 +39,5 @@ func _input(event):
 		print("No possesable character found")
 		return
 
-	if event.is_action_pressed("ui_accept"):
-		_index += 1
-		print_debug("Possesing: " + str(_index % len(possesable)))
-		_possesed.remove_child(controls)
-		_possesed = possesable[_index % len(possesable)]
-		_possesed.add_child(controls)
-		camera.target = _possesed
-		controls.on_new_parent()
+	if event.is_action("ui_cancel"):
+		get_tree().quit()

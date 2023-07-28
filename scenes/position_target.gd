@@ -26,9 +26,10 @@ func _process(delta):
 	if Engine.is_editor_hint():
 		return
 
-	if not _mouse.right:
-		move_towards_mouse_cursor()
-		try_to_snap_to_cover()
+	# # TODO: Pin to a position when a unit is moving towards the target
+	# if _mouse.right:
+	# 	move_towards_mouse_cursor()
+	# 	try_to_snap_to_cover()
 
 
 func _on_body_entered(body):
@@ -77,6 +78,7 @@ func get_target_position() -> Dictionary:
 
 
 func try_to_snap_to_cover():
+	return
 	if _snap_target == null:
 		return
 

@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtskcdek6squr"]
+
+[ext_resource type="PackedScene" uid="uid://dy2jc3cxqjm05" path="res://scenes/floor.tscn" id="1_b0t47"]
+[ext_resource type="PackedScene" uid="uid://b4jqhvkoiv8pl" path="res://scenes/camera_3rd_person.tscn" id="2_3ogpq"]
+[ext_resource type="PackedScene" uid="uid://b0voj2tpwcd17" path="res://scenes/speed_zoom_out.tscn" id="3_3ibgj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gecql"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_s08xa"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38515, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_gecql")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D/CollisionShape3D"]
+mesh = SubResource("SphereMesh_s08xa")
+skeleton = NodePath("../..")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25524, 2.38515, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
+shape = SubResource("SphereShape3D_gecql")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2/CollisionShape3D"]
+mesh = SubResource("SphereMesh_s08xa")
+skeleton = NodePath("../..")
+
+[node name="RigidBody3D3" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25524, 2.00877, -1.86176)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3"]
+shape = SubResource("SphereShape3D_gecql")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D3/CollisionShape3D"]
+mesh = SubResource("SphereMesh_s08xa")
+skeleton = NodePath("../..")
+
+[node name="RigidBody3D4" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.56097, 2.00877, -1.86176)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D4"]
+shape = SubResource("SphereShape3D_gecql")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D4/CollisionShape3D"]
+mesh = SubResource("SphereMesh_s08xa")
+skeleton = NodePath("../..")
+
+[node name="RigidBody3D5" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18355, 2.19433, 1.72211)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D5"]
+shape = SubResource("SphereShape3D_gecql")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D5/CollisionShape3D"]
+mesh = SubResource("SphereMesh_s08xa")
+skeleton = NodePath("../..")
+
+[node name="Floor" parent="." instance=ExtResource("1_b0t47")]
+transform = Transform3D(0.997866, 0.0652986, 0, -0.0649152, 0.992007, 0.108208, 0.00706581, -0.107977, 0.994128, 0, 0, 0)
+
+[node name="Camera3rdPerson" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_3ogpq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38515, 0)
+target = NodePath("../RigidBody3D")
+
+[node name="SpeedZoomOut" parent="Camera3rdPerson" instance=ExtResource("3_3ibgj")]
+amount = 20.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.692395, 0.721519, 0, -0.721519, 0.692395, 0, 1.06353, 0)
+shadow_enabled = true

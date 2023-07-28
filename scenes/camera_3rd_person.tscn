@@ -8,6 +8,7 @@
 
 [node name="Camera3rdPerson" type="Node3D"]
 script = ExtResource("1_sc5vi")
+sensitivity = Vector2(0.003, 0.02)
 speed = 4.0
 max_camera_rotation = Vector2(-25, 10)
 fov = 56.5709
